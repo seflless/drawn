@@ -1,60 +1,111 @@
-import './style.css'
-import typescriptLogo from './assets/typescript.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import { setupCounter } from './counter.ts'
+import "./style.css";
+import { annotate } from "rough-notation";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${typescriptLogo}" class="framework" alt="TypeScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.ts</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+const app = document.getElementById("app")!;
 
-<div class="ticks"></div>
+app.innerHTML = `
+  <h1>Hello <span class="circled">world</span></h1>
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://www.typescriptlang.org" target="_blank">
-          <img class="button-icon" src="${typescriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+      <p>This is <span class="underlined">underlined</span> text</p>
+      <p>This is <span class="highlighted">highlighted</span> text</p>
+      <p>This has a <span class="boxed">boxed</span> word</p>
+      <p>This is <span class="struck">struck through</span> text</p>
+      <p>This is <span class="crossed-off">crossed off</span> text</p>
+      <p class="bracket-block">
+        Bracket annotations suit a short line or paragraph; this one uses brackets
+        on the left and right.
+      </p>
+      <h2>Font Test</h2>
+      <p class="recursive">Proportional: WwWWiw il1IL</p>
+      <p class="recursive-mono">Mono: WwWWiw il1IL</p>
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
+      <p class="recursive">Proportional: Tomorrow, we'll go to the park at 5:00pm.</p>
+      <p class="recursive-mono">Mono: Tomorrow, we'll go to the park at 5:00pm.</p>
+`;
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+const RedPen = "rgb(219, 28, 28)";
+const YellowMarker = "rgba(255, 232, 28, 0.61)";
+
+async function onLoad() {
+  await document.fonts.ready;
+
+  const circled = annotate(app.querySelector(".circled")!, {
+    type: "circle",
+    color: RedPen,
+    strokeWidth: 3,
+    padding: 5,
+    iterations: 1,
+    animationDuration: 400,
+  });
+
+  circled.show();
+
+  const underlined = annotate(app.querySelector(".underlined")!, {
+    type: "underline",
+    color: RedPen,
+    strokeWidth: 3,
+    padding: 5,
+    iterations: 3,
+    animationDuration: 200,
+  });
+
+  underlined.show();
+
+  const highlighted = annotate(app.querySelector(".highlighted")!, {
+    type: "highlight",
+    color: YellowMarker,
+    // strokeWidth: 6,
+    // padding: 20,
+    iterations: 1,
+    animationDuration: 200,
+  });
+
+  highlighted.show();
+
+  const boxed = annotate(app.querySelector(".boxed")!, {
+    type: "box",
+    color: RedPen,
+    strokeWidth: 3,
+    padding: 5,
+    iterations: 1,
+    animationDuration: 250,
+  });
+
+  boxed.show();
+
+  const struck = annotate(app.querySelector(".struck")!, {
+    type: "strike-through",
+    color: RedPen,
+    strokeWidth: 3,
+    padding: 2,
+    iterations: 1,
+    animationDuration: 300,
+  });
+
+  struck.show();
+
+  const crossedOff = annotate(app.querySelector(".crossed-off")!, {
+    type: "crossed-off",
+    color: RedPen,
+    strokeWidth: 3,
+    padding: 4,
+    iterations: 1,
+    animationDuration: 250,
+  });
+
+  crossedOff.show();
+
+  const bracketed = annotate(app.querySelector(".bracket-block")!, {
+    type: "bracket",
+    color: RedPen,
+    strokeWidth: 3,
+    padding: 4,
+    iterations: 1,
+    animationDuration: 400,
+    brackets: ["left", "right"],
+  });
+
+  bracketed.show();
+}
+
+document.addEventListener("DOMContentLoaded", onLoad);
