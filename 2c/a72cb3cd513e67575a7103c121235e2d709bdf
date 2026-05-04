@@ -1,0 +1,14 @@
+package.json
+  h_04c23196cc4789 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "2ca72cb3cd513e67575a7103c121235e2d709bdf",
+  "prompts": {},
+  "humans": {
+    "h_04c23196cc4789": {
+      "author": "Francois Laberge"
+    }
+  }
+}
