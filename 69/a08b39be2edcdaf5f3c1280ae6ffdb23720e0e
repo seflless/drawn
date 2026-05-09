@@ -1,0 +1,22 @@
+src/main.ts
+  h_0dbcbba47c7061 3-6,11-21,23-28,31-120,123,126-136,138,142-156,162-167,171-179,185-190,194-201,207-232,234-235,237-257,263
+  h_04c23196cc4789 236,258-259
+index.html
+  h_04c23196cc4789 11-12
+src/style.css
+  h_0dbcbba47c7061 1-49,53-54,63-66,71-76,97-100,102-103,106-174,181,184-233
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "69a08b39be2edcdaf5f3c1280ae6ffdb23720e0e",
+  "prompts": {},
+  "humans": {
+    "h_04c23196cc4789": {
+      "author": "Francois Laberge"
+    },
+    "h_0dbcbba47c7061": {
+      "author": "Francois Laberge <francoislaberge@gmail.com>"
+    }
+  }
+}
