@@ -1,0 +1,30 @@
+vite.config.ts
+  s_137a78f9a9e3d7::t_8291f18274b342 1-5
+dist/assets/index-9PQFSyNx.js
+  s_137a78f9a9e3d7::t_276606b904ea19 1-128
+index.html
+  h_0dbcbba47c7061 18
+dist/index.html
+  s_137a78f9a9e3d7::t_276606b904ea19 15-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "9729a00e69ca1be57b3512cad02427bfa3c487ca",
+  "prompts": {},
+  "humans": {
+    "h_0dbcbba47c7061": {
+      "author": "Francois Laberge <francoislaberge@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_137a78f9a9e3d7": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "279887d2-0485-4bab-b607-4bd17262bce9",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Francois Laberge <francoislaberge@gmail.com>"
+    }
+  }
+}
