@@ -1,0 +1,26 @@
+src/main.ts
+  h_0dbcbba47c7061 147,157,166,177,200,222
+  s_120adc60281b82::t_1bd14ff0e79758 20,27,47,62,106
+  s_120adc60281b82::t_a8971c43cbb2fa 21-22,26,28-31,35-39,43,45-46,48-49,53-55,60,63-64,67,70-73,78-80,84,86-90,93-95,100,102-105,111-113,118,120-125,130-132
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "4b2bc8a348107f39f0adcaca05fc4b75aa83aaf5",
+  "prompts": {},
+  "humans": {
+    "h_0dbcbba47c7061": {
+      "author": "Francois Laberge <francoislaberge@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_120adc60281b82": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e0949-36d8-7c53-b13b-a0ee73f3efc5",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Francois Laberge <francoislaberge@gmail.com>"
+    }
+  }
+}
