@@ -13,7 +13,7 @@ app.innerHTML = `
       <!--
       <p class="eyebrow">Draft markup demo</p> -->
       <h1>
-        How readers learn from notes in the margin
+        How <span class="annotate-highlighted">readers learn from notes</span> in the margin
       </h1>
 
       <p class="lede">
@@ -144,7 +144,20 @@ type AnnotationTarget = {
   config: RoughAnnotationConfig;
 };
 
+type QueuedAnnotation = {
+  element: HTMLElement;
+  annotation: RoughAnnotation;
+  duration: number;
+  status: "pending" | "waiting" | "drawing" | "shown";
+  visible: boolean;
+};
+
 const strokeWidth = 3;
+const drawSettleMs = 90;
+const annotationPauseMinMs = 200;
+const annotationPauseMaxMs = 400;
+const readingZoneTopInsetPx = 120;
+const readingZoneBottomInsetPx = 180;
 
 const annotationTargets: AnnotationTarget[] = [
   {
@@ -152,6 +165,7 @@ const annotationTargets: AnnotationTarget[] = [
     config: {
       type: "circle",
       color: RedPen,
+      multiline: true,
       strokeWidth,
       padding: 5,
       iterations: 2,
@@ -163,7 +177,8 @@ const annotationTargets: AnnotationTarget[] = [
     config: {
       type: "highlight",
       color: YellowMarker,
-      iterations: 2,
+      multiline: true,
+      iterations: 1,
       animationDuration: 650,
     },
   },
@@ -172,6 +187,7 @@ const annotationTargets: AnnotationTarget[] = [
     config: {
       type: "crossed-off",
       color: RedPen,
+      multiline: true,
       strokeWidth,
       padding: 4,
       iterations: 2,
@@ -195,6 +211,7 @@ const annotationTargets: AnnotationTarget[] = [
     config: {
       type: "box",
       color: RedPen,
+      multiline: true,
       strokeWidth,
       padding: 5,
       iterations: 2,
@@ -206,6 +223,7 @@ const annotationTargets: AnnotationTarget[] = [
     config: {
       type: "underline",
       color: RedPen,
+      multiline: true,
       strokeWidth,
       padding: 4,
       iterations: 2,
@@ -217,6 +235,7 @@ const annotationTargets: AnnotationTarget[] = [
     config: {
       type: "strike-through",
       color: RedPen,
+      multiline: true,
       strokeWidth,
       padding: 2,
       iterations: 2,
@@ -225,7 +244,7 @@ const annotationTargets: AnnotationTarget[] = [
   },
 ];
 
-function buildAnnotations() {
+function buildAnnotations(): QueuedAnnotation[] {
   return annotationTargets.flatMap(({ selector, config }) =>
     [...app.querySelectorAll<HTMLElement>(selector)].map((element) => {
       const annotation = annotate(element, config);
@@ -242,35 +261,108 @@ function buildAnnotations() {
       return {
         element,
         annotation,
+        duration: Number(config.animationDuration) || 0,
+        status: "pending",
+        visible: false,
       };
     }),
   );
 }
 
-function showAnnotationsWhenVisible(
-  annotations: Array<{ element: HTMLElement; annotation: RoughAnnotation }>,
-) {
+function isInReadingZone(element: HTMLElement) {
+  const rect = element.getBoundingClientRect();
+  const viewportHeight = window.innerHeight;
+
+  return (
+    rect.bottom > readingZoneTopInsetPx &&
+    rect.top < viewportHeight - readingZoneBottomInsetPx
+  );
+}
+
+function wait(ms: number) {
+  return new Promise((resolve) => {
+    window.setTimeout(resolve, ms);
+  });
+}
+
+function randomAnnotationPause() {
+  return (
+    annotationPauseMinMs +
+    Math.random() * (annotationPauseMaxMs - annotationPauseMinMs)
+  );
+}
+
+function showAnnotationsWhenVisible(annotations: QueuedAnnotation[]) {
+  let activeAnnotation: QueuedAnnotation | undefined;
+
+  async function processQueue() {
+    if (activeAnnotation) {
+      return;
+    }
+
+    const nextAnnotation = annotations
+      .filter(
+        (candidate) =>
+          candidate.status === "pending" &&
+          candidate.visible &&
+          isInReadingZone(candidate.element),
+      )
+      .sort(
+        (a, b) =>
+          a.element.getBoundingClientRect().top -
+          b.element.getBoundingClientRect().top,
+      )[0];
+
+    if (!nextAnnotation) {
+      return;
+    }
+
+    activeAnnotation = nextAnnotation;
+    nextAnnotation.status = "waiting";
+    await wait(randomAnnotationPause());
+
+    if (!nextAnnotation.visible || !isInReadingZone(nextAnnotation.element)) {
+      nextAnnotation.status = "pending";
+      activeAnnotation = undefined;
+      processQueue();
+      return;
+    }
+
+    nextAnnotation.status = "drawing";
+    nextAnnotation.annotation.show();
+
+    await wait(nextAnnotation.duration + drawSettleMs);
+
+    nextAnnotation.status = "shown";
+    observer.unobserve(nextAnnotation.element);
+    activeAnnotation = undefined;
+    processQueue();
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-
         const match = annotations.find(
           ({ element }) => element === entry.target,
         );
-        match?.annotation.show();
-        observer.unobserve(entry.target);
+
+        if (!match || match.status === "shown") {
+          return;
+        }
+
+        match.visible = entry.isIntersecting;
       });
+
+      processQueue();
     },
     {
-      threshold: 0.55,
-      rootMargin: "0px 0px -12% 0px",
+      threshold: 0.2,
+      rootMargin: "0px 0px -8% 0px",
     },
   );
 
   annotations.forEach(({ element }) => observer.observe(element));
+  processQueue();
 }
 
 async function onLoad() {

@@ -171,7 +171,7 @@ p {
 
 .article span {
   position: relative;
-  white-space: nowrap;
+  /* white-space: nowrap; */
 }
 
 .rough-annotation path {
