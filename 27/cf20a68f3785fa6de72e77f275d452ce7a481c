@@ -1,0 +1,19 @@
+src/main.ts
+  s_120adc60281b82::t_47506c17126f8c 151,250-264,267-268,280,284,326
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "27cf20a68f3785fa6de72e77f275d452ce7a481c",
+  "prompts": {},
+  "sessions": {
+    "s_120adc60281b82": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e0949-36d8-7c53-b13b-a0ee73f3efc5",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Francois Laberge <francoislaberge@gmail.com>"
+    }
+  }
+}
