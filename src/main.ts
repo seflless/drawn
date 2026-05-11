@@ -148,6 +148,7 @@ type QueuedAnnotation = {
   element: HTMLElement;
   annotation: RoughAnnotation;
   duration: number;
+  order: number;
   status: "pending" | "waiting" | "drawing" | "shown";
   visible: boolean;
 };
@@ -246,12 +247,25 @@ const annotationTargets: AnnotationTarget[] = [
 ];
 
 function buildAnnotations(): QueuedAnnotation[] {
-  return annotationTargets.flatMap(({ selector, config }) =>
-    [...app.querySelectorAll<HTMLElement>(selector)].map((element) => {
+  const annotationSelector = annotationTargets
+    .map(({ selector }) => selector)
+    .join(",");
+
+  return [...app.querySelectorAll<HTMLElement>(annotationSelector)].map(
+    (element, order) => {
+      const target = annotationTargets.find(({ selector }) =>
+        element.matches(selector),
+      );
+
+      if (!target) {
+        throw new Error("Missing annotation config for target element.");
+      }
+
+      const { config } = target;
       const annotation = annotate(element, config);
 
-      // Add the annotation type to the generated svg so we can style different types
-      // annotations differently.
+      // Add the annotation type to the generated svg so we can style different
+      // annotation types differently.
       if (element.previousElementSibling) {
         element.previousElementSibling.setAttribute(
           "data-annotation-type",
@@ -263,10 +277,11 @@ function buildAnnotations(): QueuedAnnotation[] {
         element,
         annotation,
         duration: Number(config.animationDuration) || 0,
+        order,
         status: "pending",
         visible: false,
       };
-    }),
+    },
   );
 }
 
@@ -308,11 +323,7 @@ function showAnnotationsWhenVisible(annotations: QueuedAnnotation[]) {
           candidate.visible &&
           isInReadingZone(candidate.element),
       )
-      .sort(
-        (a, b) =>
-          a.element.getBoundingClientRect().top -
-          b.element.getBoundingClientRect().top,
-      )[0];
+      .sort((a, b) => a.order - b.order)[0];
 
     if (!nextAnnotation) {
       return;
