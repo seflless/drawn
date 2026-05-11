@@ -1,0 +1,18 @@
+src/main.ts
+  h_0dbcbba47c7061 158-159
+.npmignore
+  h_0dbcbba47c7061 1
+README.md
+  h_0dbcbba47c7061 4-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "36c9f6d32a7932ecb15049b2a5ea4649534033e9",
+  "prompts": {},
+  "humans": {
+    "h_0dbcbba47c7061": {
+      "author": "Francois Laberge <francoislaberge@gmail.com>"
+    }
+  }
+}
