@@ -17,103 +17,119 @@ app.innerHTML = `
       </h1>
 
       <p class="lede">
-        A good annotation does more than decorate a page. It slows the reader down
-        at the exact moment a sentence deserves a second look.
+        A good annotation does more than <span class="annotate-underlined">decorate a page</span>.
+        It slows the reader down at the exact moment a sentence deserves a
+        <span class="annotate-circled">second look</span>.
       </p>
 
       <p>
-        When students study an essay, they rarely move in a straight line from the
-        first word to the last. They circle claims, underline the evidence, and
-        leave small arguments with the author in the margin. The page becomes a
-        record of attention rather than a passive block of text.
+        When students study an essay, they
+        <span class="annotate-highlighted">rarely move</span> in a straight line
+        from the first word to the last. They <span class="annotate-underlined">circle claims</span>,
+        underline the <span class="annotate-boxed">evidence</span>, and leave small arguments
+        with the author in the margin. The page becomes a record of attention
+        rather than a <span class="annotate-crossed-off">passive block of text</span>.
       </p>
 
       <p>
-        This demo treats that familiar habit as an interface pattern. The browser
-        still renders ordinary HTML, but the marks arrive like a professor reading
-        with a red pen: <span class="annotate-circled">find the thesis</span>,
-        question the weak parts, and make the strongest ideas easier to return to.
+        This demo treats that familiar habit as an <span class="annotate-boxed">interface pattern</span>.
+        The browser still renders <span class="annotate-underlined">ordinary HTML</span>, but the
+        marks arrive like a professor reading with a red pen:
+        <span class="annotate-circled">find the thesis</span>, question the weak parts,
+        and make the <span class="annotate-highlighted">strongest ideas</span> easier to return to.
       </p>
 
       <section class="paper-note">
-        <h2>1. Mark the claim before the evidence</h2>
+        <h2>1. Mark the <span class="annotate-underlined">claim</span> before the evidence</h2>
         <p>
-          Readers need a clear place to begin. In a draft, that usually means
-          identifying the sentence that makes the piece accountable:
-          <span class="annotate-highlighted">good notes turn attention into a visible trail</span>.
-          Once the claim is visible, the rest of the paragraph can be judged against it.
+          Readers need a <span class="annotate-boxed">clear place</span> to begin. In a draft,
+          that usually means identifying the sentence that makes the piece accountable:
+          good notes turn attention into a <span class="annotate-highlighted">visible trail</span>.
+          Once the claim is visible, the rest of the paragraph can be
+          <span class="annotate-circled">judged against it</span>.
         </p>
         <p>
           A teacher might underline the next sentence and ask whether it actually
-          supports the claim. A designer might use the same motion to guide someone
-          through a product tour without adding another panel or tooltip.
+          <span class="annotate-underlined">supports the claim</span>. A designer might use
+          the same motion to guide someone through a <span class="annotate-boxed">product tour</span>
+          without adding <span class="annotate-crossed-off">another panel or tooltip</span>.
         </p>
       </section>
 
       <section class="paper-note">
-        <h2>2. Use friction where the draft gets vague</h2>
+        <h2>2. Use friction where the draft gets <span class="annotate-circled">vague</span></h2>
         <p>
-          The easiest sentences to ignore are often the ones most in need of review:
-          "this improves engagement," "users love it," or
+          The easiest <span class="annotate-underlined">sentences to ignore</span> are often
+          the ones most in need of review: "this improves engagement,"
+          <span class="annotate-boxed">"users love it,"</span> or
           <span class="annotate-crossed-off">the experience is simply better</span>.
           Crossing out that kind of phrase creates useful friction. It says the
-          idea may be right, but the writing has not earned it yet.
+          idea may be right, but the writing has not <span class="annotate-circled">earned it yet</span>.
         </p>
         <p>
-          The same visual language works for studying. A reader can mark the line
-          where an author jumps from observation to conclusion, then return later
-          with a sharper question.
+          The same <span class="annotate-highlighted">visual language</span> works for studying.
+          A reader can mark the line where an author jumps from
+          <span class="annotate-underlined">observation to conclusion</span>, then return later
+          with a <span class="annotate-circled">sharper question</span>.
         </p>
       </section>
 
       <aside class="margin-callout annotate-bracketed">
-        The most useful marks are not always the loudest marks. Brackets are good
-        for paragraphs that need to be reconsidered as a whole.
+        The most useful marks are not always the <span class="annotate-crossed-off">loudest marks</span>.
+        Brackets are good for paragraphs that need to be
+        <span class="annotate-underlined">reconsidered as a whole</span>.
       </aside>
 
       <section class="paper-note">
-        <h2>3. Box terms that need definition</h2>
+        <h2>3. Box terms that need <span class="annotate-boxed">definition</span></h2>
         <p>
-          Some words carry more weight than the sentence admits. If a post says a
-          system is <span class="annotate-boxed">agentic</span>, the reader deserves
-          to know whether that means autonomous planning, tool use, background work,
-          or merely a conversational wrapper around a form.
+          Some words <span class="annotate-underlined">carry more weight</span> than the sentence admits.
+          If a post says a system is <span class="annotate-boxed">agentic</span>, the reader
+          deserves to know whether that means <span class="annotate-highlighted">autonomous planning</span>,
+          tool use, background work, or merely a <span class="annotate-crossed-off">conversational wrapper</span>
+          around a form.
         </p>
         <p>
-          A quick box makes the term feel pending. It is a compact way to say:
-          define this before asking the reader to build on it.
+          A quick box makes the term feel <span class="annotate-circled">pending</span>.
+          It is a compact way to say: <span class="annotate-underlined">define this</span>
+          before asking the reader to build on it.
         </p>
       </section>
 
       <section class="paper-note">
-        <h2>4. Let emphasis arrive with the scroll</h2>
+        <h2>4. Let emphasis arrive with the <span class="annotate-underlined">scroll</span></h2>
         <p>
-          If every mark appears on page load, the annotations become a screenshot.
-          If each mark starts as the relevant passage scrolls into view, the page
-          feels like it is being read in real time. That timing makes
-          <span class="annotate-underlined">the effect part of the explanation</span>,
+          If every mark appears on page load, the annotations become a
+          <span class="annotate-crossed-off">screenshot</span>. If each mark starts as the
+          relevant passage <span class="annotate-highlighted">scrolls into view</span>, the page
+          feels like it is being read <span class="annotate-circled">in real time</span>. That timing makes
+          the effect <span class="annotate-underlined">part of the explanation</span>,
           not just a layer on top of it.
         </p>
         <p>
           This is the behavior the prototype should preserve as it grows into a
-          component collection: effects should be attachable to real content and
-          triggered by reading position, interaction, or an explicit sequence.
+          <span class="annotate-boxed">component collection</span>: effects should be attachable
+          to <span class="annotate-underlined">real content</span> and triggered by reading position,
+          interaction, or an <span class="annotate-circled">explicit sequence</span>.
         </p>
       </section>
 
       <section class="paper-note">
-        <h2>5. Show revision as a visible act</h2>
+        <h2>5. Show revision as a <span class="annotate-highlighted">visible act</span></h2>
         <p>
-          A marked-up page can be more honest than a polished final version. It can
-          show where an editor paused, where a student noticed a pattern, and where
-          the argument changed direction. The goal is not to imitate paper for its
-          own sake; the goal is to make attention visible.
+          A marked-up page can be more honest than a
+          <span class="annotate-crossed-off">polished final version</span>. It can show where
+          an <span class="annotate-boxed">editor paused</span>, where a student noticed a pattern,
+          and where the <span class="annotate-underlined">argument changed direction</span>.
+          The goal is not to imitate paper for its own sake; the goal is to
+          <span class="annotate-circled">make attention visible</span>.
         </p>
         <p>
           That is why a simple phrase like
           <span class="annotate-struck">obviously true</span> benefits from a strike.
-          The mark gives the writer a concrete next step: replace certainty with
-          evidence.
+          The mark gives the writer a <span class="annotate-highlighted">concrete next step</span>:
+          replace <span class="annotate-crossed-off">certainty</span> with
+          <span class="annotate-underlined">evidence</span>.
         </p>
       </section>
     </article>
@@ -128,7 +144,7 @@ type AnnotationTarget = {
   config: RoughAnnotationConfig;
 };
 
-const strokeWidth = 6;
+const strokeWidth = 3;
 
 const annotationTargets: AnnotationTarget[] = [
   {
@@ -138,7 +154,7 @@ const annotationTargets: AnnotationTarget[] = [
       color: RedPen,
       strokeWidth,
       padding: 5,
-      iterations: 1,
+      iterations: 2,
       animationDuration: 550,
     },
   },
@@ -147,7 +163,7 @@ const annotationTargets: AnnotationTarget[] = [
     config: {
       type: "highlight",
       color: YellowMarker,
-      iterations: 1,
+      iterations: 2,
       animationDuration: 650,
     },
   },
@@ -158,7 +174,7 @@ const annotationTargets: AnnotationTarget[] = [
       color: RedPen,
       strokeWidth,
       padding: 4,
-      iterations: 1,
+      iterations: 2,
       animationDuration: 450,
     },
   },
@@ -181,7 +197,7 @@ const annotationTargets: AnnotationTarget[] = [
       color: RedPen,
       strokeWidth,
       padding: 5,
-      iterations: 1,
+      iterations: 2,
       animationDuration: 400,
     },
   },
@@ -203,7 +219,7 @@ const annotationTargets: AnnotationTarget[] = [
       color: RedPen,
       strokeWidth,
       padding: 2,
-      iterations: 1,
+      iterations: 2,
       animationDuration: 450,
     },
   },
