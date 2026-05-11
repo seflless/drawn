@@ -2,4 +2,6 @@
 
 A collection of drawing effects and animations.
 
-<video src="https://github.com/seflless/drawn/blob/main/docs/media/drawn-prototype.mp4"></video>
+https://github.com/user-attachments/assets/273cc7c4-a01c-4081-8af2-345e6fb831a5
+
+
