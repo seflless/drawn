@@ -155,8 +155,8 @@ type QueuedAnnotation = {
 
 const strokeWidth = 3;
 const drawSettleMs = 90;
-const annotationPauseMinMs = 50;
-const annotationPauseMaxMs = 200;
+const annotationPauseMinMs = 0;
+const annotationPauseMaxMs = 0;
 const readingZoneTopInsetPx = 120;
 const readingZoneBottomInsetPx = 180;
 
