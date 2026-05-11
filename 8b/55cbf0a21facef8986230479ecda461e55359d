@@ -1,0 +1,24 @@
+.gitignore
+  h_0dbcbba47c7061 11
+dist/assets/index-CNdiyxzP.js
+  ai_agent 1-128
+dist/assets/index-qS6SY_yN.css
+  ai_agent 1
+dist/icons.svg
+  ai_agent 1-24
+dist/favicon.svg
+  ai_agent 1
+dist/index.html
+  ai_agent 1-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "8b55cbf0a21facef8986230479ecda461e55359d",
+  "prompts": {},
+  "humans": {
+    "h_0dbcbba47c7061": {
+      "author": "Francois Laberge <francoislaberge@gmail.com>"
+    }
+  }
+}
