@@ -13,11 +13,11 @@ app.innerHTML = `
       <!--
       <p class="eyebrow">Draft markup demo</p> -->
       <h1>
-        How <span class="annotate-highlighted">readers learn from notes</span> in the margin
+        How readers <span class="annotate-highlighted">learn from notes</span> <span class="annotate-underlined">in the margin</span>
       </h1>
 
       <p class="lede">
-        A good annotation does more than <span class="annotate-underlined">decorate a page</span>.
+        A good annotation does more than <span class="annotate-boxed">decorate a page</span>.
         It slows the reader down at the exact moment a sentence deserves a
         <span class="annotate-circled">second look</span>.
       </p>
@@ -75,9 +75,9 @@ app.innerHTML = `
       </section>
 
       <aside class="margin-callout annotate-bracketed">
-        The most useful marks are not always the <span class="annotate-crossed-off">loudest marks</span>.
+        The most useful marks are not always the loudest marks.
         Brackets are good for paragraphs that need to be
-        <span class="annotate-underlined">reconsidered as a whole</span>.
+        reconsidered as a whole.
       </aside>
 
       <section class="paper-note">
@@ -154,8 +154,8 @@ type QueuedAnnotation = {
 
 const strokeWidth = 3;
 const drawSettleMs = 90;
-const annotationPauseMinMs = 200;
-const annotationPauseMaxMs = 400;
+const annotationPauseMinMs = 50;
+const annotationPauseMaxMs = 200;
 const readingZoneTopInsetPx = 120;
 const readingZoneBottomInsetPx = 180;
 
@@ -179,6 +179,7 @@ const annotationTargets: AnnotationTarget[] = [
       color: YellowMarker,
       multiline: true,
       iterations: 1,
+      padding: 0,
       animationDuration: 650,
     },
   },
@@ -213,7 +214,7 @@ const annotationTargets: AnnotationTarget[] = [
       color: RedPen,
       multiline: true,
       strokeWidth,
-      padding: 5,
+      padding: 0,
       iterations: 2,
       animationDuration: 400,
     },
@@ -225,7 +226,7 @@ const annotationTargets: AnnotationTarget[] = [
       color: RedPen,
       multiline: true,
       strokeWidth,
-      padding: 4,
+      padding: 2,
       iterations: 2,
       animationDuration: 450,
     },
